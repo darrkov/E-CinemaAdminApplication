@@ -1,0 +1,35 @@
+﻿@model List<E_CinemaAdminApplication.Models.Order>
+<div class = "container">
+
+    <div class="row"> 
+        <a class="btn btn-outline-success" asp-controller="Order" asp-action="ExportAllOrders">Export Movies</a> 
+    </div>
+
+    <div class="row m-5">
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Customer Details</th>
+      <th scope="col">Number Of Movies</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+      @for(int i =0; i< Model.Count; i++)
+      {
+         var item = Model[i];
+         <tr>
+            <th scope="row">@(i+1)</th>
+            <td>@item.User.UserName</td>
+            <td>@item.Products.Count</td>
+            <td><a asp-action="Details" asp-route-orderId="@item.Id" class="btn btn-outline-secondary">New Order</a></td>
+            <td><a asp-action="CreateInvoice" asp-route-id="@item.Id" class="btn btn-outline-secondary">Create Invoice</a></td>
+        </tr>
+      }
+  </tbody>
+  
+</table>
+    </div>
+    </div>

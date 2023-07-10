@@ -1,0 +1,35 @@
+﻿
+@model E_CinemaAdminApplication.Models.Order
+
+
+
+<div class="container">
+    <div class="m-3">
+        <a class="btn btn-success" >Order For: @Model.User.UserName</a>
+    </div>
+
+    @for(int i =0; i<Model.Products.Count; i++){
+        var item = Model.Products.ElementAt(i).Product;
+
+        if(i % 3 == 0){
+            @:<div class="row">
+        }
+
+        <div class="col-md-3 m-4">
+                <div class="card" style="width: 18rem; height: 30rem;">
+                <img class="card-img-top" src="@item.ProductImage" style="height:50%" alt="Image for product!"/>
+                
+
+                <div class="card-body">
+                    <h3 class="card-title">@item.ProductName</h3>
+                    <p class="card-text">@item.ProductDescription</p>
+                    <h6>Price: @item.ProductPrice</h6>
+                 </div>
+                </div>
+        </div>
+
+        if(i % 3 == 2){
+            @:</div>
+        }
+    }
+</div>
